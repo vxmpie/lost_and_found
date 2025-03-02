@@ -56,7 +56,7 @@ body {
 /* กล่อง Sign Up / Login */
 .wrapper{
     width: 420px;
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
     color: #000000;
     box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
     border-radius: 10px;
@@ -74,6 +74,7 @@ body {
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
+
 }
 
 .btn:hover {
@@ -125,7 +126,6 @@ form {
     width: 100%;
     height: 50px;
     margin: 30px 0;
-
 }
 
 .input-box input {
@@ -157,8 +157,7 @@ form {
 .input-box label {
     color: #282828;
     font-size: 15px;
-    /* padding: 20px; */
-
+    text-align: left;
 }
 
 .wrapper .btn {
@@ -178,6 +177,25 @@ form {
     display: block;
     margin: 10px auto; /* จัดให้อยู่ตรงกลาง */
 }
+
+.btn2 {
+    width: 100%; /* หรือปรับเป็น auto */
+    max-width: 300px; /* กำหนดขนาดสูงสุดให้ปุ่ม */
+    height: 45px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    display: block;
+    margin: 10px auto; /* จัดให้อยู่ตรงกลาง */
+}
+
 
 .wrapper .btn:hover {
     background: linear-gradient(135deg, #5b76e9, #9059d1);
@@ -205,7 +223,7 @@ form {
 }
 
 button {
-
+    width: 100%;
     color: rgb(125, 125, 235);
     border: none;
     background-color: transparent;
@@ -218,7 +236,7 @@ footer{
 
 button:hover {
     text-decoration: underline;
-    color: blue;
+    color: rgb(123, 233, 252);
 }
 
 .wrapper {
@@ -274,4 +292,17 @@ button:hover {
         display: inline;
         width: 80%;
     }
+}
+
+form .input-box {
+    margin-bottom: 15px;
+}
+
+#submit_form {
+    margin-top: 10px; /* ปรับระยะห่างจาก input */
+}
+
+.register-link {
+    margin-top: 20px;
+    text-align: center;
 }

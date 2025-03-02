@@ -59,42 +59,42 @@ function showProfile(event, formType) {
     
 // });
 }
-const toggleSwitch = document.getElementById('toggleMode');
+// const toggleSwitch = document.getElementById('toggleMode');
 
-// โหลดค่าธีมจาก Local Storage
-function updateDarkModeUI() {
-    const isDark = document.body.classList.contains("dark-mode");
-    document.querySelectorAll("input, label, button").forEach(el => {
-        if (isDark) {
-            el.classList.add("dark-mode");
-        } else {
-            el.classList.remove("dark-mode");
-        }
-    });
-}
+// // โหลดค่าธีมจาก Local Storage
+// function updateDarkModeUI() {
+//     const isDark = document.body.classList.contains("dark-mode");
+//     document.querySelectorAll("input, label, button").forEach(el => {
+//         if (isDark) {
+//             el.classList.add("dark-mode");
+//         } else {
+//             el.classList.remove("dark-mode");
+//         }
+//     });
+// }
 
-function loadTheme() {
-    const darkMode = localStorage.getItem("darkMode");
-    if (darkMode === "enabled") {
-        document.body.classList.add("dark-mode");
-        document.getElementById('toggleMode').checked = true;
-    }
-    updateDarkModeUI();
-}
+// function loadTheme() {
+//     const darkMode = localStorage.getItem("darkMode");
+//     if (darkMode === "enabled") {
+//         document.body.classList.add("dark-mode");
+//         document.getElementById('toggleMode').checked = true;
+//     }
+//     updateDarkModeUI();
+// }
 
-function switchTheme() {
-    if (document.getElementById('toggleMode').checked) {
-        document.body.classList.add("dark-mode");
-        localStorage.setItem("darkMode", "enabled");
-    } else {
-        document.body.classList.remove("dark-mode");
-        localStorage.setItem("darkMode", "disabled");
-    }
-    updateDarkModeUI();
-}
+// function switchTheme() {
+//     if (document.getElementById('toggleMode').checked) {
+//         document.body.classList.add("dark-mode");
+//         localStorage.setItem("darkMode", "enabled");
+//     } else {
+//         document.body.classList.remove("dark-mode");
+//         localStorage.setItem("darkMode", "disabled");
+//     }
+//     updateDarkModeUI();
+// }
 
-document.getElementById('toggleMode').addEventListener("change", switchTheme);
-document.addEventListener("DOMContentLoaded", loadTheme);
+// document.getElementById('toggleMode').addEventListener("change", switchTheme);
+// document.addEventListener("DOMContentLoaded", loadTheme);
 
 
 

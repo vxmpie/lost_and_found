@@ -13,13 +13,20 @@
     <!-- Include your custom CSS -->
     <link rel="stylesheet" href="design.css">
     <link rel="stylesheet" href="addDesign.css">
+    <link rel="stylesheet" href="designset.css">
 
 </head>
 
 <body class="body">
-    <div class="foundify">
-        <a>Foundify</a>
+    <div class="foundify" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <a style="flex-grow: 1; text-align: center;">Foundify</a>
+        
+            <label class="switch">
+                <input type="checkbox" id="toggleMode">
+                <span class="slider"></span>
+            </label>
     </div>
+    
     <div style="padding: 20px;">
      <!-- ปุ่ม New -->
 <div style="padding-top: 90px; padding-left: 20px;">
