@@ -27,8 +27,8 @@
     <div style="padding: 20px;">
         <div  id="postTitle" style="font-size: 40px; font-weight: bold; padding-top: 100px; padding-bottom : 30px;"></div>
 
-        <div class="card" style=" max-width: 100%; border-radius: 15px; padding: 20px;">
-            <img id="postImage" class="card-img-top" style="padding: 20px; border-radius: 30px;" alt="Item Image">
+        <div class="card backgroundCard" style=" max-width: 100%; border-radius: 15px; padding: 20px;">
+            <img id="postImage" class="card-img-top" style="background-color: transparent; padding: 20px; border-radius: 30px;" alt="Item Image">
             <div class="card-body">
                 
               <h2 class="card-title">Description</h2>
@@ -49,7 +49,7 @@
                       <!-- วันที่และเวลาโพสต์จะแสดงที่นี่ -->
                   </div>
 
-                    <div id="app" style="padding-top: 20px;">
+                    <div id="app" style="padding-top: 20px; margin-bottom: 30px;">
                         <button id="contactButton">Contact</button>
                     
                         <div id="contactBox" class="contact-box">
@@ -59,7 +59,7 @@
                         </div>
                     
                         <div class="backdrop" id="backdrop"></div>
-                        <div class="dialog" id="dialog">
+                        <div class="dialog background" id="dialog">
                           <h2>Please Log in</h2>
                           <p>to view contact information.</p>
                           <button onclick="goToLogin()">Go to Account for Log In</button>
@@ -79,6 +79,9 @@
 
      <!-- Link with index.html -->
     <script>
+
+
+
       function getQueryParam(param) {
           const urlParams = new URLSearchParams(window.location.search);
           return urlParams.get(param) || 'ข้อมูลไม่พบ';
@@ -98,11 +101,12 @@
         <i class="bi bi-clock-fill" style="margin-right: 5px;"></i> โพสต์เมื่อ: ${postedDateTime}
     `;
 });
+
   </script>
 
    <!-- Contact Button -->
   <script>
-    const isLoggedIn = true; // เปลี่ยนเป็น false ถ้าต้องการทดสอบแบบไม่ได้ล็อกอิน
+    const isLoggedIn = false; // เปลี่ยนเป็น false ถ้าต้องการทดสอบแบบไม่ได้ล็อกอิน
     const contactButton = document.getElementById('contactButton');
     const contactBox = document.getElementById('contactBox');
     const dialog = document.getElementById('dialog');
