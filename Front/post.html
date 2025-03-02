@@ -34,18 +34,18 @@
               <h2 class="card-title">Description</h2>
               <p id="postSubtitle" class="card-title">Loading...</p>
                     
-                    <div style="color: rgb(0, 0, 0); font-weight: normal;">
+                    <div class="font">
                         <i class="bi bi-calendar-fill" style="margin-right: 5px; color: rgba(5, 223, 209, 0.829)"></i>
                         <span id="postDate">Loading...</span>
                     </div>
                     
-                    <div style="color: rgb(0, 0, 0); font-weight: normal;">
+                    <div class="font">
                         <i class="bi bi-geo-alt-fill" style="margin-right: 5px;color: rgba(5, 223, 209, 0.829)"></i>
                         <span id="postLocation">Loading...</span>
                     </div>
 
                      <!-- เพิ่มวันที่และเวลาโพสต์ (โพสต์เมื่อ) -->
-                    <div id="postPostedDateTime" style="color: gray; font-weight: normal; padding-top: 10px;">
+                    <div id="postPostedDateTime" class="my-textPost">
                       <!-- วันที่และเวลาโพสต์จะแสดงที่นี่ -->
                   </div>
 
@@ -68,12 +68,12 @@
                     
           </div>
     </div>
-    <footer style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: white; padding: 5px; box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); z-index: 999;">
-      <div class="container d-flex justify-content-around">
+    <footer class="footer">
+      <div class="container d-flex justify-content-around d-flex2">
           <a href="home.html" id="homeLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
           <a href="search.html" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
           <a href="add.html" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
-          <a href="set.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
+          <a href="signup_login.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
       </div>
   </footer>
 
@@ -157,6 +157,7 @@
                 document.getElementById('setLink').classList.add('active');
             }
   </script>
+      <script src="darkMode.js"></script>
 
 </body>
 </html>

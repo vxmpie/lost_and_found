@@ -28,7 +28,7 @@
         <!-- ชื่อ -->
         <div class="col-md-5 mb-3" style="padding-top: 10px;">
             <label for="validationCustom01" class="form-label">ชื่อ</label>
-            <input type="text" class="form-control" id="validationCustom01" value="" placeholder="กุญแจ" required>
+            <input type="text" class="form-control formSearch"  id="validationCustom01" value="" placeholder="กุญแจ" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -37,14 +37,14 @@
         <!-- ไฟล์ -->
         <div class="col-md-5 mb-3" style="padding-top: 10px;">
             <div style="padding-bottom: 10px;">รูปภาพ</div>
-            <input type="file" class="form-control" aria-label="file example" required>
+            <input type="file" class="form-control formSearch"  aria-label="file example" required>
             <div class="invalid-feedback">Example invalid form file feedback</div>
         </div>
     
         <!-- คำอธิบาย -->
         <div class="col-md-5 mb-3" style="padding-top: 10px;">
             <label for="validationCustom01" class="form-label">คำอธิบาย</label>
-            <input type="text" class="form-control" id="validationCustom01" value="" placeholder="สีทอง มีพวงกุญแจห้อย" required>
+            <input type="text" class="form-control formSearch" id="validationCustom01" value="" placeholder="สีทอง มีพวงกุญแจห้อย" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -55,13 +55,13 @@
             <label for="datepicker" class="form-label">
                 วันที่พบ <i class="bi bi-calendar-fill" style="font-size: 20px; padding-left: 5px; color:rgb(36,222,206);"></i>
             </label>
-            <input type="text" class="form-control" id="datepicker" placeholder="เลือกวันที่">
+            <input type="text" class="form-control formSearch"   id="datepicker" placeholder="เลือกวันที่">
         </div>
     
         <!-- สถานที่พบ -->
         <div class="col-md-5 mb-3" style="padding-top: 10px;">
             <label for="validationCustom01" class="form-label">สถานที่พบ</label>
-            <input type="text" class="form-control" id="validationCustom01" value="" placeholder="ตึกโหล สจล" required>
+            <input type="text" class="form-control formSearch"  id="validationCustom01" value="" placeholder="ตึกโหล สจล" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -70,7 +70,7 @@
         <!-- ปุ่ม Post -->
         <div class="col-md-5 mb-3" style="padding-top: 10px;">
             <div id="app" >
-                <button id="postButton" style="border-radius: 10px; padding: 10px; width: 15%;">Post</button>
+                <button id="postButton" style="border-radius: 10px; padding: 10px; width: 20%;">Post</button>
              </div>
             </div>
     </div>
@@ -79,11 +79,11 @@
 <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header d-flex justify-content-center align-items-center" >
+            <div class="modal-header d-flex justify-content-center align-items-center d-flex2" >
                <h5 class="modal-title text-center flex-grow-1" id="postModalLabel">Thank you</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body text-center">
+            <div class="modal-body text-center" style="margin-bottom: 100px;">
                 <p>Have a nice day!</p>
                 <div class="d-flex justify-content-center gap-2">
                     <button id="goToPost">Go to your Post</button>
@@ -102,14 +102,15 @@
    
       
 
-      <footer style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: white; padding: 5px; box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); z-index: 999;">
-        <div class="container d-flex justify-content-around">
+      <footer class="footer">
+        <div class="container d-flex justify-content-around d-flex2">
             <a href="home.html" id="homeLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
             <a href="search.html" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
             <a href="add.html" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
-            <a href="set.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
+            <a href="signup_login.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
         </div>
     </footer>
+    <script src="darkMode.js"></script>
 
 <script>
     $(document).ready(function(){
