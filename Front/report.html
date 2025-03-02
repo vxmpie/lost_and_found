@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundify - Report</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #00796b;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #333;
+            font-size: 20px;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        input[type="text"], button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #00796b;
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #004d40;
+        }
+        .hidden {
+            display: none;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .popup button {
+            width: auto;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Foundify</h1>
+        <h2>Report</h2>
+        <p>What type of issue are you reporting?</p>
+        <form id="reportForm">
+            <label><input type="radio" name="issue" value="Advertising"> Advertising</label>
+            <label><input type="radio" name="issue" value="Privacy"> Privacy</label>
+            <label><input type="radio" name="issue" value="Spam"> Spam</label>
+            <label><input type="radio" name="issue" value="Sexual"> Sexual</label>
+            <label><input type="radio" name="issue" value="Sensitive Media"> Sensitive Media</label>
+            <label>Other: <input type="text" name="other"></label>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="popup" class="popup hidden">
+        <p><strong>Thank you !!</strong></p>
+        <p>Foundify will carefully review your report</p>
+        <button onclick="goHome()">Go to home</button>
+    </div>
+    <script>
+        document.getElementById('reportForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('popup').classList.remove('hidden');
+        });
+        function goHome() {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

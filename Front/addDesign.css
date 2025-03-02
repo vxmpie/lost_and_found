@@ -1,5 +1,40 @@
 
-  .contact-box {
+ 
+ 
+ /*เพิ่ม z-index*/
+.foundify {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+
+ /* ปรับสไตล์สำหรับปกติ */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 0px;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+ 
+}
+ 
+ 
+ .contact-box {
     display: none;
     border: 2px dashed black;
     padding: 15px;
@@ -7,9 +42,10 @@
     width: 500px;
     margin-top: 10px;
     text-align: left;
-    background-color: white;
+    background-color: transparent;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
+    margin-bottom: 30px;
   }
 
   .contact-box.active {
@@ -187,6 +223,7 @@
   width: 100%;
   border: 1px solid #ccc;
   padding-right: 40px;
+  background-color: #ffffff;
 }
 
 .btn {
@@ -223,5 +260,216 @@
 /* เมื่อไอคอนมีคลาส active จะเปลี่ยนเป็นสีเขียว */
 .footer-icon.active i {
   color: rgb(36, 222, 206); /* สีที่ต้องการ */
+}
+
+.newButton {
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+.my-card {
+  max-width: 100%;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.my-textPost {
+  color: gray;
+  font-weight: normal;
+  padding-top: 10px;
+}
+
+.my-textTime {
+  color: gray;
+  font-weight: normal;
+}
+
+.my-textfont {
+  color: gray;
+  font-weight: normal;
+  margin-right: 5px;
+ 
+}
+
+.my-fixed-element {
+  position: fixed;
+  top: -500px;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bg-body-tertiary {
+  background-color: #e9ecef; /* สีพื้นหลังอ่อนของเทมเพลต bootstrap */
+}
+
+.d-flex{
+  background-color: transparent;
+  padding: 20px;
+}
+
+.d-flex2{
+  background-color: transparent;
+  padding: 2px;
+ 
+}
+
+.Thankyou{
+  background-color: #ffffff;
+  padding: 20px;
+  
+}
+
+.search{
+  border: 1px solid #ccc; 
+  padding-right: 40px; 
+  flex-grow: 1;
+}
+
+.formSearch{
+  border-radius: 12px; 
+  border-color:rgb(36,222,206) ;
+  background-color: #ffffff;
+}
+
+/* ปรับสไตล์สำหรับดาร์กโหมด */
+body.dark-mode {
+  background-color:  #353535; /* สีพื้นหลังสำหรับ Dark Mode */
+  color:  aliceblue; /* สีข้อความสำหรับ Dark Mode */
+}
+
+body.dark-mode .background{
+  background-color:  #636363; 
+}
+
+body.dark-mode .search{
+  border: 1px solid #535353; 
+  padding-right: 40px; 
+  flex-grow: 1;
+  background-color: #636363;
+}
+
+body.dark-mode .font{
+  color:  aliceblue;
+}
+
+body.dark-mode .bg-body-tertiary {
+  background-color:  #464646; 
+}
+
+body.dark-mode.my-textTime {
+  color: aliceblue;;
+  font-weight: normal;
+ 
+}
+
+body.dark-mode .my-textPost {
+  color: aliceblue;;
+  font-weight: normal;
+  padding-top: 10px;
+}
+
+body.dark-mode .my-textfont {
+  color: aliceblue;;
+  font-weight: normal;
+  padding-top: 5px;
+}
+
+body.dark-mode .newButton {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 20px;
+  color:  aliceblue;
+}
+
+body.dark-mode .my-card {
+  max-width: 100%;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px #464646;
+  background-color: #636363;
+}
+
+body.dark-mode .backgroundCard {
+  color: rgb(36, 222, 206); /* สีที่ต้องการ */
+  background-color: #636363;
+  box-shadow: 0 4px 8px #464646;
+  color: aliceblue;
+}
+
+body.dark-mode .footer {
+  background-color: #525252;
+  color:  aliceblue;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .footer-icon i {
+  font-size: 35px; /* กำหนดขนาดไอคอน */
+  color:  aliceblue; /* กำหนดสีเริ่มต้น */
+  transition: filter 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+body.dark-mode .footer-icon.active i {
+  color: rgb(36, 222, 206); /* สีที่ต้องการ */
+}
+
+
+
+body.dark-mode .foundify {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  color: aliceblue;
+  background-color:#525252;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+body.dark-mode.my-form {
+  border-radius: 12px; 
+  border-color:rgb(36,222,206) ;
+  background-color: #525252;
+}
+
+body.dark-mode.form-control {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding-right: 40px;
+  background-color: #636363;
+  color: aliceblue;
+}
+
+body.dark-mode .formSearch{
+  border-radius: 12px; 
+  border-color:rgb(36,222,206) ;
+  background-color: #535353;
+  color: rgb(216, 216, 216);
+}
+
+body.dark-mode ::placeholder {
+  color: rgb(216, 216, 216); /* สีเทาสว่างสำหรับ Dark Mode */
+}
+
+body.dark-mode .navbar.my-fixed-element {
+  background-color: #353535 !important; /* ปรับสีพื้นหลังของ navbar */
 }
 

@@ -27,29 +27,29 @@
     <div style="padding: 20px;">
         <div  id="postTitle" style="font-size: 40px; font-weight: bold; padding-top: 100px; padding-bottom : 30px;"></div>
 
-        <div class="card" style=" max-width: 100%; border-radius: 15px; padding: 20px;">
-            <img id="postImage" class="card-img-top" style="padding: 20px; border-radius: 30px;" alt="Item Image">
+        <div class="card backgroundCard" style=" max-width: 100%; border-radius: 15px; padding: 20px;">
+            <img id="postImage" class="card-img-top" style="background-color: transparent; padding: 20px; border-radius: 30px;" alt="Item Image">
             <div class="card-body">
                 
               <h2 class="card-title">Description</h2>
               <p id="postSubtitle" class="card-title">Loading...</p>
                     
-                    <div style="color: rgb(0, 0, 0); font-weight: normal;">
+                    <div class="font">
                         <i class="bi bi-calendar-fill" style="margin-right: 5px; color: rgba(5, 223, 209, 0.829)"></i>
                         <span id="postDate">Loading...</span>
                     </div>
                     
-                    <div style="color: rgb(0, 0, 0); font-weight: normal;">
+                    <div class="font">
                         <i class="bi bi-geo-alt-fill" style="margin-right: 5px;color: rgba(5, 223, 209, 0.829)"></i>
                         <span id="postLocation">Loading...</span>
                     </div>
 
                      <!-- เพิ่มวันที่และเวลาโพสต์ (โพสต์เมื่อ) -->
-                    <div id="postPostedDateTime" style="color: gray; font-weight: normal; padding-top: 10px;">
+                    <div id="postPostedDateTime" class="my-textPost">
                       <!-- วันที่และเวลาโพสต์จะแสดงที่นี่ -->
                   </div>
 
-                    <div id="app" style="padding-top: 20px;">
+                    <div id="app" style="padding-top: 20px; margin-bottom: 30px;">
                         <button id="contactButton">Contact</button>
                     
                         <div id="contactBox" class="contact-box">
@@ -59,7 +59,7 @@
                         </div>
                     
                         <div class="backdrop" id="backdrop"></div>
-                        <div class="dialog" id="dialog">
+                        <div class="dialog background" id="dialog">
                           <h2>Please Log in</h2>
                           <p>to view contact information.</p>
                           <button onclick="goToLogin()">Go to Account for Log In</button>
@@ -68,17 +68,20 @@
                     
           </div>
     </div>
-    <footer style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: white; padding: 5px; box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); z-index: 999;">
-      <div class="container d-flex justify-content-around">
+    <footer class="footer">
+      <div class="container d-flex justify-content-around d-flex2">
           <a href="home.html" id="homeLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
           <a href="search.html" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
           <a href="add.html" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
-          <a href="set.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
+          <a href="signup_login.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
       </div>
   </footer>
 
      <!-- Link with index.html -->
     <script>
+
+
+
       function getQueryParam(param) {
           const urlParams = new URLSearchParams(window.location.search);
           return urlParams.get(param) || 'ข้อมูลไม่พบ';
@@ -98,11 +101,12 @@
         <i class="bi bi-clock-fill" style="margin-right: 5px;"></i> โพสต์เมื่อ: ${postedDateTime}
     `;
 });
+
   </script>
 
    <!-- Contact Button -->
   <script>
-    const isLoggedIn = true; // เปลี่ยนเป็น false ถ้าต้องการทดสอบแบบไม่ได้ล็อกอิน
+    const isLoggedIn = false; // เปลี่ยนเป็น false ถ้าต้องการทดสอบแบบไม่ได้ล็อกอิน
     const contactButton = document.getElementById('contactButton');
     const contactBox = document.getElementById('contactBox');
     const dialog = document.getElementById('dialog');
@@ -157,6 +161,7 @@
                 document.getElementById('setLink').classList.add('active');
             }
   </script>
+      <script src="darkMode.js"></script>
 
 </body>
 </html>
