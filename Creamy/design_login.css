@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Red Rose';
+    src: url('./Red_Rose/static/RedRose-Regular.ttf') format('truetype');
+  }
+  
+
+
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +22,7 @@ body {
     font-family: Arial, sans-serif;
     padding-top: 70px; /* เผื่อพื้นที่ให้ Foundify */
     padding-bottom: 60px; /* เผื่อพื้นที่ให้ Navbar */
+    font-family: 'Red Rose';
 }
 
 /* ส่วนหัว Foundify */
@@ -182,7 +190,7 @@ form {
     width: 100%; /* หรือปรับเป็น auto */
     max-width: 300px; /* กำหนดขนาดสูงสุดให้ปุ่ม */
     height: 45px;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    background: linear-gradient(90deg, rgba(37,231,128,1) 0%, rgba(149,227,233,1) 83%);
     border: none;
     outline: none;
     border-radius: 40px;

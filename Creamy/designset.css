@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Red Rose';
+    src: url('./Red_Rose/static/RedRose-Regular.ttf') format('truetype');
+  }
+
 body {
     display: flex;
     flex-direction: column;
@@ -9,6 +14,7 @@ body {
     font-family: Arial, sans-serif;
     padding-top: 70px; /* เผื่อพื้นที่ให้ Foundify */
     padding-bottom: 60px; /* เผื่อพื้นที่ให้ Navbar */
+    font-family: 'Red Rose';
 }
 
 .wrapper, .wrapper1 {

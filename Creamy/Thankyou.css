@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'Red Rose';
+    src: url('./Red_Rose/static/RedRose-Regular.ttf') format('truetype');
+  }
+
+
 /* ----- โหมดปกติ (Light Mode) ----- */
 :root {
     --bg-color: white;
@@ -32,6 +38,7 @@ body.dark-mode {
 body {
     background: var(--bg-color);
     color: var(--text-color);
+    font-family: 'Red Rose';
 }
 
 .Thankyou {

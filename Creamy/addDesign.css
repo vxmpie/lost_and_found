@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'Red Rose';
+  src: url('./Red_Rose/static/RedRose-Regular.ttf') format('truetype');
+}
 
- 
+body {
+  font-family: 'Red Rose';
+}
+
+
  
  /*เพิ่ม z-index*/
 .foundify {

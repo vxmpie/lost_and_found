@@ -1,5 +1,10 @@
+@font-face {
+    font-family: 'Red Rose';
+    src: url('./Red_Rose/static/RedRose-Regular.ttf') format('truetype');
+  }
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Red Rose';
     text-align: center;
     margin: 0;
     padding: 0;
