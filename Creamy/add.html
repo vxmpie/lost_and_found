@@ -24,11 +24,12 @@
 <body>
     <div class="foundify" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
         <a style="flex-grow: 1; text-align: center;">Foundify</a>
+
+        <label class="switch">
+            <input type="checkbox" id="toggleMode">
+            <span class="slider"></span>
+        </label>
         
-            <label class="switch">
-                <input type="checkbox" id="toggleMode">
-                <span class="slider"></span>
-            </label>
     </div>
    
     <form id="yourFormId" class="container d-flex flex-column align-items-center justify-content-center was-validated" style="height: 100vh; padding-top: 20px;">
@@ -121,21 +122,20 @@
 <script>
     $(document).ready(function(){
       $('#datepicker').datepicker({
-        format: 'dd/mm/yyyy', // รูปแบบวันที่
-        autoclose: true, // ปิดปฏิทินอัตโนมัติหลังเลือก
-        todayHighlight: true // ไฮไลต์วันที่ปัจจุบัน
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayHighlight: true
       });
     });
 
      // Footer active link script
-     const currentPage = window.location.pathname.split("/").pop(); // ตรวจสอบชื่อไฟล์หน้าเว็บปัจจุบัน
-            const links = document.querySelectorAll('.footer-icon'); // เลือกไอคอนทั้งหมดใน footer
+     const currentPage = window.location.pathname.split("/").pop();
+            const links = document.querySelectorAll('.footer-icon');
 
             links.forEach(link => {
-                link.classList.remove('active'); // ลบคลาส active ออกจากไอคอนทั้งหมด
+                link.classList.remove('active');
             });
 
-            // เปลี่ยนคลาส active สำหรับไอคอนที่ตรงกับหน้าเว็บที่เปิด
             if (currentPage === 'home.html') {
                 document.getElementById('homeLink').classList.add('active');
             } else if (currentPage === 'search.html') {
@@ -151,14 +151,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-     // เปิด Modal เมื่อคลิกปุ่ม
      document.getElementById("postButton").addEventListener("click", function (event) {
-            event.preventDefault(); // ป้องกันการส่งฟอร์มถ้ายังไม่กรอกครบ
+            event.preventDefault();
             var postModal = new bootstrap.Modal(document.getElementById('postModal'));
             postModal.show();
         });
 
-        // เมื่อคลิกปุ่ม Go to Post จะตรวจสอบฟอร์ม
+        // Click buttin Go to Post
         document.getElementById('goToPost').addEventListener('click', function(event) {
             var form = document.getElementById('yourFormId');
             if (!form.checkValidity()) {
@@ -166,7 +165,7 @@
                 document.getElementById('formError').classList.remove('d-none');
             } else {
                 document.getElementById('formError').classList.add('d-none');
-                window.location.href = "yourpost.html"; // ไปที่หน้าของโพสต์
+                window.location.href = "yourpost.html";
             }
         });
 </script>
