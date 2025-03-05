@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+  
+<?php
+    require "db_connect.php";       
+    session_start(); 
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -17,6 +22,13 @@
 
 </head>
 
+<?php
+          $sql_select_post = "SELECT * FROM items WHERE items.id = '".$_GET['id']."'"; 
+          $resuut_select_post = $dbo->query("$sql_select_post")->fetch();   
+          $sql_select_user = "SELECT email FROM users WHERE users.id = '{$resuut_select_post['owner']}'";                    
+          $query_select_user = $dbo->query("$sql_select_user")->fetch();   
+      ?>
+
 <body>
 
   <div class="foundify2" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -25,24 +37,23 @@
     <i class="bi bi-flag-fill" onclick="window.location.href='report.html';" style="margin-left: auto; padding-right: 20px;"></i>
   </div>
     
-    <div style="padding: 20px;">
-        <div  id="postTitle" style="font-size: 40px; font-weight: bold; padding-top: 100px; padding-bottom : 30px;"></div>
-
-        <div class="card backgroundCard" style=" max-width: 100%; border-radius: 15px; padding: 20px;">
-            <img id="postImage" class="card-img-top" style="background-color: transparent; padding: 20px; border-radius: 30px;" alt="Item Image">
-            <div class="card-body">
+    <div style="padding: 20px; display: flex; align-items: center; justify-content: center;">
+        <div  id="postTitle" style="font-size: 40px; font-weight: bold; padding-top: 100px; padding-bottom : 30px;"></div>        
+        <div class="card backgroundCard" style="max-width: 50%; border-radius: 15px; padding: 20px;">
+            <img src="/MobileProject/image/<?php echo $resuut_select_post['image'];?>" id="postImage"  class="card-img-top" style=" background-color: transparent; padding: 20px; border-radius: 30px;">
+            <div class="card-body">          
                 
-              <h2 class="card-title">Description</h2>
-              <p id="postSubtitle" class="card-title">Loading...</p>
+              <h2 class="card-title"><?php echo $resuut_select_post['title'];?></h2>
+              <p id="postSubtitle" class="card-title"><?php echo $resuut_select_post['description'];?></p>
                     
                     <div class="font">
                         <i class="bi bi-calendar-fill" style="margin-right: 5px; color: rgba(5, 223, 209, 0.829)"></i>
-                        <span id="postDate">Loading...</span>
+                        <span id="postDate"><?php echo $resuut_select_post['date'];?></span>
                     </div>
                     
                     <div class="font">
                         <i class="bi bi-geo-alt-fill" style="margin-right: 5px;color: rgba(5, 223, 209, 0.829)"></i>
-                        <span id="postLocation">Loading...</span>
+                        <span id="postLocation"><?php echo $resuut_select_post['location'];?></span>
                     </div>
 
                      <!-- เพิ่มวันที่และเวลาโพสต์ (โพสต์เมื่อ) -->
@@ -56,7 +67,7 @@
                         <div id="contactBox" class="contact-box">
                           <button class="hide-button" onclick="toggleContact()">Hide</button>
                           <div style="font-size: 20px;"><strong>Contact</strong></div>
-                          <div>Email: founder@example.com</div>
+                          <div>Email: <?php echo $query_select_user['email'];?></div>
                         </div>
                     
                         <div class="backdrop" id="backdrop"></div>
@@ -71,43 +82,27 @@
     </div>
     <footer class="footer">
       <div class="container d-flex justify-content-around d-flex2">
-          <a href="home.html" id="homeLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
-          <a href="search.html" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
-          <a href="add.html" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
-          <a href="signup_login.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
+          <a href="home.php" id="homeLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
+          <a href="search.php" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
+          <a href="add.php" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
+          <a href="signup_login.php" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
       </div>
   </footer>
 
-     <!-- Link with index.html -->
-    <script>
-
-
-
-      function getQueryParam(param) {
-          const urlParams = new URLSearchParams(window.location.search);
-          return urlParams.get(param) || 'ข้อมูลไม่พบ';
-      }
-  
-      document.addEventListener("DOMContentLoaded", function() {
-          document.getElementById("postImage").src = "/image/" + getQueryParam("image");
-          document.getElementById("postTitle").textContent = getQueryParam("title");
-          document.getElementById("postSubtitle").textContent = getQueryParam("subtitle");
-          document.getElementById("postDate").textContent = getQueryParam("date");
-          document.getElementById("postLocation").textContent = getQueryParam("location");
-     
-          
-          // แสดงวันที่และเวลาที่โพสต์
-    const postedDateTime = getQueryParam("postedDateTime"); // วันที่และเวลา
-    document.getElementById("postPostedDateTime").innerHTML = `
-        <i class="bi bi-clock-fill" style="margin-right: 5px;"></i> โพสต์เมื่อ: ${postedDateTime}
-    `;
-});
-
-  </script>
-
    <!-- Contact Button -->
-  <script>
-    const isLoggedIn = false; // เปลี่ยนเป็น false ถ้าต้องการทดสอบแบบไม่ได้ล็อกอิน
+   <?php
+   if(isset($_SESSION['user_id'])){
+   echo '<script>';
+   echo 'const isLoggedIn = true;';
+   echo '</script>';
+   }
+  else{
+  echo '<script>';
+  echo 'const isLoggedIn = false;';
+  echo '</script>';
+  }
+   ?>  
+    <script>
     const contactButton = document.getElementById('contactButton');
     const contactBox = document.getElementById('contactBox');
     const dialog = document.getElementById('dialog');
@@ -130,7 +125,7 @@
     }
 
     function goToLogin() {
-      alert('Redirecting to login page...');
+      window.location.href = 'signup_login.php';
       hideDialog();
     }
 
@@ -142,26 +137,29 @@
       contactButton.textContent = 'Request Founder Contact';
       contactButton.onclick = showDialog;
     }
+    
 
+    
      // Footer active link script
-     const currentPage = window.location.pathname.split("/").pop(); // ตรวจสอบชื่อไฟล์หน้าเว็บปัจจุบัน
-            const links = document.querySelectorAll('.footer-icon'); // เลือกไอคอนทั้งหมดใน footer
+        const currentPage = window.location.pathname.split("/").pop(); // ตรวจสอบชื่อไฟล์หน้าเว็บปัจจุบัน
+        const links = document.querySelectorAll('.footer-icon'); // เลือกไอคอนทั้งหมดใน footer
 
-            links.forEach(link => {
-                link.classList.remove('active'); // ลบคลาส active ออกจากไอคอนทั้งหมด
-            });
+        links.forEach(link => {
+            link.classList.remove('active'); // ลบคลาส active ออกจากไอคอนทั้งหมด
+        });
 
-            // เปลี่ยนคลาส active สำหรับไอคอนที่ตรงกับหน้าเว็บที่เปิด
-            if (currentPage === 'home.html') {
-                document.getElementById('homeLink').classList.add('active');
-            } else if (currentPage === 'search.html') {
-                document.getElementById('searchLink').classList.add('active');
-            } else if (currentPage === 'add.html') {
-                document.getElementById('addLink').classList.add('active');
-            } else if (currentPage === 'set.html') {
-                document.getElementById('setLink').classList.add('active');
-            }
-  </script>
+        // เปลี่ยนคลาส active สำหรับไอคอนที่ตรงกับหน้าเว็บที่เปิด
+        if (currentPage === 'home.php') {
+            document.getElementById('homeLink').classList.add('active');
+        } else if (currentPage === 'search.php') {
+            document.getElementById('searchLink').classList.add('active');
+        } else if (currentPage === 'add.php') {
+            document.getElementById('addLink').classList.add('active');
+        } else if (currentPage === 'signup_login.php') {
+            document.getElementById('setLink').classList.add('active');
+        }
+    </script>
+    
       <script src="darkMode.js"></script>
 
 </body>

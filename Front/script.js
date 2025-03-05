@@ -6,6 +6,27 @@ const signInForm = document.getElementById('signIn');
 const signUpForm = document.getElementById('signup');
 const signButton = document.getElementById('signButton');
 
+document.addEventListener('DOMContentLoaded', function() {
+    // ดึงค่าจาก URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const errorValue = urlParams.get('error');
+
+    // ถ้ามีค่าผ่านมาจาก error=1 ใน URL, จะทำการแสดงการแสดงผลบางอย่าง
+    if (errorValue) {
+        console.log("Error value from URL:", errorValue);
+
+        // คุณสามารถเลือกที่จะส่งค่าผ่านไปยังฟังก์ชัน showProfile
+        // โดยอาจจะใช้ค่าจาก errorValue เพื่อบอกลักษณะของการแสดงผล
+        // เช่น ให้เปลี่ยนชื่อหรือข้อความบางอย่างที่เกี่ยวกับ error
+        // สมมติว่าแสดงฟอร์ม signup พร้อม error
+        if (errorValue == '0') {
+            // ตัวอย่างการส่ง event และ formType ไปยัง showProfile
+            const event = new Event('submit');  // สร้าง event ใหม่
+            showProfile(event, 'signup');
+        }
+    }
+});
+
 signButton.addEventListener('click', function () {
     page1Form.style.display = "none";
     signInForm.style.display = "block";
@@ -151,6 +172,5 @@ document.getElementById('changeNameButton').addEventListener('click', function (
 //     let savedName = localStorage.getItem('userName') || "User";
 //     document.getElementById('userNameDisplay').textContent = savedName;
 // });
-
 
 

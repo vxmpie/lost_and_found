@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // เปลี่ยนคลาส active สำหรับไอคอนที่ตรงกับหน้าเว็บที่เปิด
-    if (currentPage === "home.html") {
+    if (currentPage === "home.php") {
         document.getElementById('homeLink')?.classList.add('active');
-    } else if (currentPage === "search.html") {
+    } else if (currentPage === "search.php") {
         document.getElementById('searchLink')?.classList.add('active');
     } else if (currentPage === "add.html") {
         document.getElementById('addLink')?.classList.add('active');

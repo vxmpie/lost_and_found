@@ -43,18 +43,15 @@
         <div id="searchResults"></div>
     </div>
 
-    <footer class="footer">
-        <div class="container d-flex justify-content-around d-flex2">
-            <a href="home.html" id="homeLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
-            <a href="search.html" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
-            <a href="add.html" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
-            <a href="signup_login.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
-        </div>
-    </footer>
- 
-
-
-  <script src="darkMode.js"></script>
+<footer class="footer">
+    <div class="container d-flex justify-content-around d-flex2">
+        <a href="home.php" id="homeLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
+        <a href="search.php" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
+        <a href="add.html" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
+        <a href="signup.php" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
+    </div>
+</footer>
+    <script src="darkMode.js"></script>
     <script src="search.js"> </script>
 
 </body>
