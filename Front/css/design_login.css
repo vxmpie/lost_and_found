@@ -1,0 +1,316 @@
+@font-face {
+    font-family: 'Red Rose';
+    src: url('./Red_Rose/static/RedRose-Regular.ttf') format('truetype');
+  }
+  
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: ; */
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #f4f4f4;
+    font-family: Arial, sans-serif;
+    padding-top: 70px; /* เผื่อพื้นที่ให้ Foundify */
+    padding-bottom: 60px; /* เผื่อพื้นที่ให้ Navbar */
+    font-family: 'Red Rose';
+}
+
+/* ส่วนหัว Foundify */
+.foundify {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+}
+.dark-mode .foundify{
+    background: #636363;
+    color: white;
+    box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.2);
+}
+/* Navbar อยู่ด้านล่าง */
+/* .navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+    height: 60px;
+    z-index: 1000;
+} */
+
+/* กล่อง Sign Up / Login */
+.wrapper{
+    width: 420px;
+    background-color: transparent;
+    color: #000000;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin: auto; /* ให้มีพื้นที่ตรงกลาง */
+}
+
+/* ปรับแต่งปุ่ม */
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #9a9a9a;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+
+}
+
+.btn:hover {
+    background: #ef0505;
+    color: white;
+}
+
+
+.container {
+    overflow: hidden;
+}
+
+
+a {
+    margin: 0 10px;
+}
+
+a img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+.foundify {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+}
+
+form {
+    margin: 0 2rem;
+}
+
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.wrapper .input-box {
+    /* position: relative; */
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border: 2px solid rgb(36,222,206);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #000000;
+    margin-top: 5px;
+    padding: 20px 45px 20px 20px;
+    
+}
+
+.input-box input::placeholder {
+    color: #000000;
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px
+}
+
+.input-box label {
+    color: #282828;
+    font-size: 15px;
+    text-align: left;
+}
+
+.wrapper .btn {
+    width: 100%; /* หรือปรับเป็น auto */
+    max-width: 300px; /* กำหนดขนาดสูงสุดให้ปุ่ม */
+    height: 45px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    display: block;
+    margin: 10px auto; /* จัดให้อยู่ตรงกลาง */
+}
+
+.btn2 {
+    width: 100%; /* หรือปรับเป็น auto */
+    max-width: 300px; /* กำหนดขนาดสูงสุดให้ปุ่ม */
+    height: 45px;
+    background: linear-gradient(90deg, rgba(37,231,128,1) 0%, rgba(149,227,233,1) 83%);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    display: block;
+    margin: 10px auto; /* จัดให้อยู่ตรงกลาง */
+}
+
+
+.wrapper .btn:hover {
+    background: linear-gradient(135deg, #5b76e9, #9059d1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.wrapper .btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+
+.links {
+    justify-content: space-around;
+    padding: 0 4rem;
+    margin-top: 0.9rem;
+    font-weight: bold;
+}
+
+button {
+    width: 100%;
+    color: rgb(125, 125, 235);
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+}
+footer{
+    background-color: white;
+}
+
+button:hover {
+    text-decoration: underline;
+    color: rgb(123, 233, 252);
+}
+
+.wrapper {
+    text-align: center;
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.user-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+
+
+
+@media screen and (max-width:820px) {
+    .navbar {
+        text-align: center;
+        width: 100%;
+    }
+
+    a {
+        display: inline;
+        margin: 10px;
+        width: 30%;
+
+    }
+}
+
+@media screen and (max-width:390px) {
+    .navbar {
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+    }
+
+    a {
+        display: inline;
+        width: 80%;
+    }
+}
+
+form .input-box {
+    margin-bottom: 15px;
+}
+
+#submit_form {
+    margin-top: 10px; /* ปรับระยะห่างจาก input */
+}
+
+.register-link {
+    margin-top: 20px;
+    text-align: center;
+}
