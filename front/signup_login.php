@@ -54,7 +54,7 @@ session_start();
                 <input type="password" name="password" id="signin-password" placeholder="Password" required>
             </div>
             <div style="padding-top: 10px;">
-                <input type="submit" class="btn2" value="Sign In" id="submit_form" name="signIn">
+                <input type="submit" class="btn2" value="Log In" id="submit_form" name="signIn">
             </div>
         </form>
         <div class="register-link">
@@ -135,7 +135,13 @@ session_start();
             .then(data => {
                 if (data.status === 'success') {
                     // alert(data.message);
-                    
+                    Swal.fire({
+                        title: "สมัครสมาชิกสำเร็จ",
+                        text: "ยินดีต้อนรับเข้าสู่ระบบ",
+                        icon: "success"
+                    }).then((resp) => {
+                        window.location.reload();
+                    })
                     // window.location.href = 'signup_login.php';
                    
                 } else {
@@ -158,14 +164,14 @@ session_start();
                 if (data.status === 'success') {
                     // alert(data.message);
                     
-                Swal.fire({
-                    title: "เข้าสู่ระบบสำเร็จ",
-                    text: "ยินดีต้อนรับกลับเข้าสู่ระบบ",
-                    icon: "success"
-                }).then((resp) => {
-                    // window.location.reload();
+                     Swal.fire({
+                        title: "เข้าสู่ระบบสำเร็จ",
+                        text: "ยินดีต้อนรับกลับเข้าสู่ระบบ",
+                        icon: "success"
+                     }).then((resp) => {
+                         window.location.reload();
                     
-                })
+                      })
 
                 // header("Location: ?page=signup;");
                 

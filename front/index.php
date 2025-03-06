@@ -110,7 +110,7 @@ error_reporting(0);
                                                     <i class="bi bi-geo-alt-fill font" style="margin-right: 5px;"></i> ${item.location}
                                                 </div>
                                                 <div class="my-textPost">
-                                                    <i class="bi bi-clock-fill font" style="margin-right: 5px;"></i> โพสต์เมื่อ: ${item.posted}
+                                                    <i class="bi bi-clock-fill font" style="margin-right: 5px;"></i> โพสต์เมื่อ: ${item.created_at}
                                                 </div>
                                             </div>
                                         </div>
