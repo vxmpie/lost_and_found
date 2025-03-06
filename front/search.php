@@ -21,6 +21,10 @@
             const query = new URLSearchParams(window.location.search).get('q');
             if (query) {
                 performSearch(null, query);
+
+
+
+                
             }
         });
 
