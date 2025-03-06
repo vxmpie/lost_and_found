@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php 
+session_start();
+error_reporting(0);
 
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +18,8 @@
     <link rel="stylesheet" href="css/design.css">
     <link rel="stylesheet" href="css/addDesign.css">
     <link rel="stylesheet" href="css/designset.css">
+    <link rel="stylesheet" href="css/profile.css">  
+    <!-- <link rel="stylesheet" href="css/design_login.css"> -->
 </head>
 
 <body class="body">
@@ -30,35 +36,69 @@
         <div id="itemsContainer"></div>
 
         <footer class="footer">
+            <div class="container justify-content-around">
+                <?php 
+                    switch($_GET['page']) {
+                        case "home": 
+                            require_once 'index.php';
+                            break;
+                        case "search": 
+                            require_once 'search.php';
+                            break;
+                        case "add":
+                            require_once 'add.php';
+                            break;
+                        case "signup":
+                            require_once 'signup_login.php';
+                            break;
+                        case "post":
+                            require_once 'post.php';
+                            break;
+                        default: 
+                            // require_once 'index.php';
+                            break;
+                    }
+                ?>
+    <div class="container" style="padding-top: 20px; padding-bottom: 80px;">
+        <div id="itemsContainer">
+        </div>
+
+        <footer class="footer">
             <div class="container d-flex justify-content-around d-flex2">
-                <a href="home.html" id="homeLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
-                <a href="search.html" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
-                <a href="add.html" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
-                <a href="signup_login.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
+                <a href="?page=home" id="indexLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
+                <a href="?page=search" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
+                <a href="?page=add" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
+                <a href="?page=signup" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
             </div>
         </footer>
     </div>
+    </div>
+    <?php
+    
+    // echo "https://", $_SERVER['HTTP_HOST'], "/back/api/home.php";
+    
+    ?>
 
     <script src="js/darkMode.js"></script>
     <script src="js/home.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            fetch('api/home.php')
+            fetch('<?php echo "http://", $_SERVER['HTTP_HOST'], "/back/api/home.php"; ?>')
                 .then(response => response.json())
                 .then(data => {
                     const container = document.getElementById('itemsContainer');
                     data.forEach(item => {
                         const itemCard = document.createElement('a');
-                        itemCard.href = `post.html?id=${item.id}`;
+                        itemCard.href = `?page=post&id=${item.id}`;
                         itemCard.style.textDecoration = 'none';
                         itemCard.style.color = 'inherit';
                         itemCard.innerHTML = `
                             <div class="card mb-3 mx-auto my-card font">
                                 <div class="row g-0">
                                     <div class="col-md-4" style="height: 250px; display: flex; align-items: center;">
-                                        <img src="uploads/${item.image}" class="img-fluid rounded-start" alt="" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                        <img src="../back/api/uploads/${item.image}" class="img-fluid rounded-start" alt="" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-8">  
                                         <div class="card-body d-flex flex-column justify-content-between" style="min-height: 200px;">
                                             <h2 class="card-title">${item.name}</h2>
                                             <p class="card-text flex-grow-1">${item.description}</p>

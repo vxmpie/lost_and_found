@@ -12,8 +12,8 @@ if (isset($_GET['id'])) {
     if ($result_post->num_rows > 0) {
         $post = $result_post->fetch_assoc();
         
-        $userId = $post['owner'];
-        $sql_select_user = "SELECT email FROM users WHERE id = '$userId'";
+        $userId = $post['post_by'];
+        $sql_select_user = "SELECT email FROM account WHERE id = '$userId'";
         $result_user = $conn->query($sql_select_user);
         
         if ($result_user->num_rows > 0) {

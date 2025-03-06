@@ -249,6 +249,14 @@ body {
   background-color: #ffffff;
 }
 
+.search-contrainer{
+  background-color: transparent;
+  padding: 20px;
+  display: flex;
+  position: fixed;
+  top: 60px;
+}
+
 .btn {
   position: absolute;
   right: 10px;
@@ -338,6 +346,7 @@ body {
 .d-flex{
   background-color: transparent;
   padding: 20px;
+  
 }
 
 .d-flex2{

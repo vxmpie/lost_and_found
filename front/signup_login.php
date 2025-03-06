@@ -1,40 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php 
+session_start();
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link rel="stylesheet" href="css/design.css">
-    <link rel="stylesheet" href="css/addDesign.css">
-    <link rel="stylesheet" href="css/designset.css">
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/design_login.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" charset="UTF-8"></script>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-    <!-- Include your custom Calendar -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-</head>
-
-<body class="body">
-    <div class="foundify" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-        <a style="flex-grow: 1; text-align: center;">Foundify</a>
-        <label class="switch">
-            <input type="checkbox" id="toggleMode">
-            <span class="slider"></span>
-        </label>
-    </div>
-
-    <div class="pageset1" id="page1">
+?>
+<link rel="stylesheet" href="css/design_login.css">
+<div class="" style="height: 100%; margin-top: 45%">
+<div class="pageset1" id="page1">
         <div>
             <div class="button_sign" id="signButton">
                 <i class="bi bi-person-fill"></i>
@@ -44,7 +14,7 @@
     </div>
 
     <div class="wrapper" id="signup" style="display:none;">
-        <form id="signupForm">
+        <form id="signupForm" action="#">
             <h1 id="login">Sign up</h1>
             <div class="input-box" style="text-align: left;">
                 <label for="fname">Name</label>
@@ -73,7 +43,7 @@
     </div>
 
     <div class="wrapper" id="signIn" style="display: none;">
-        <form id="loginForm">
+        <form id="loginForm" action="#">
             <h1 id="login">Log in</h1>
             <div class="input-box" style="text-align: left;">
                 <label for="email">Email</label>
@@ -104,20 +74,55 @@
         <h1>User Profile</h1>
         <p id="profile-info"></p>
         <span id="userNameDisplay">User</span>
+        
         <button id="changeNameButton" style="border: none; background: none; cursor: pointer;">
             ✏️
         </button>
+        
+        <a href="?page=signup&logout=logout" id="logout" style="border: none; background: none; cursor: pointer;">
+            ออกจากระบบ
+        </a>
     </div>
+</div>
+<?php 
 
-    <footer class="footer">
-        <div class="container d-flex justify-content-around d-flex2">
-            <a href="index.html" id="indexLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
-            <a href="search.html" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
-            <a href="add.html" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
-            <a href="signup_login.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
-        </div>
-    </footer>
+    if($_GET['logout'] == 'logout') {
+        // header("refresh: 5;")
+        ?>
+        <?php
+        unset($_SESSION['username']);
+?>
 
+<?php 
+    }
+
+    // echo $_SESSION['username'];
+    // echo "TEST";
+    if(isset($_SESSION['username'])) {
+    ?>
+
+
+<script>
+    document.getElementById('profilepage').style.display = 'block';
+    document.getElementById('signIn').style.display = 'none';
+    document.getElementById('signup ').style.display = 'none';
+</script>
+<?php 
+} else 
+
+{
+
+?>
+
+<script>
+    document.getElementById('signIn').style.display = 'block';
+// document.getElementById('signIn').style.display = 'block';
+</script>
+
+<?php 
+
+}
+?>
     <script>
         document.getElementById('signupForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -129,17 +134,20 @@
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    alert(data.message);
-                    window.location.href = 'signup_login.html';
+                    // alert(data.message);
+                    
+                    // window.location.href = 'signup_login.php';
+                   
                 } else {
-                    alert(data.message);
+                    // alert(data.message);
                 }
             })
-            .catch(error => console.error('Error:', error));
+            // .catch(error => console.error('Error:', error));
         });
 
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
+            location.href="?page=home";
             var formData = new FormData(this);
             fetch('../Back/api/login_user.php', {
                 method: 'POST',
@@ -148,13 +156,30 @@
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    alert(data.message);
-                    window.location.href = 'profile.html';
-                } else {
-                    alert(data.message);
+                    // alert(data.message);
+                    
+                Swal.fire({
+                    title: "เข้าสู่ระบบสำเร็จ",
+                    text: "ยินดีต้อนรับกลับเข้าสู่ระบบ",
+                    icon: "success"
+                }).then((resp) => {
+                    // window.location.reload();
+                    
+                })
+
+                // header("Location: ?page=signup;");
+                
+                
+            } else {
+                // alert(data.message);
+                Swal.fire({
+                    title: "ข้อมูลไม่ถูกต้อง",
+                    text: "ไม่สามารถเข้าสู่ระบบได้",
+                    icon: "error"
+                });
                 }
             })
-            .catch(error => console.error('Error:', error));
+            // .catch(error => console.error('Error:', error));
         });
 
         document.getElementById('signUpButton').addEventListener('click', function() {
@@ -167,22 +192,7 @@
             document.getElementById('signIn').style.display = 'block';
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const currentPage = window.location.pathname.split("/").pop();
-            const links = document.querySelectorAll('.footer-icon');
-            links.forEach(link => link.classList.remove('active'));
-            if (currentPage === 'index.html') {
-                document.getElementById('indexLink').classList.add('active');
-            } else if (currentPage === 'search.html') {
-                document.getElementById('searchLink').classList.add('active');
-            } else if (currentPage === 'add.html') {
-                document.getElementById('addLink').classList.add('active');
-            } else if (currentPage === 'signup_login.html') {
-                document.getElementById('setLink').classList.add('active');
-            }
-        });
     </script>
     <script src="js/darkMode.js"></script>
-    <script src="js/signup_login.js"></script>
-</body>
-</html>
+    <!-- <script src="js/signup_login.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

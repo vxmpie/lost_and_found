@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // เปลี่ยนคลาส active สำหรับไอคอนที่ตรงกับหน้าเว็บที่เปิด
-    if (currentPage === "home.php") {
+    if (currentPage === "home.html") {
         document.getElementById('homeLink')?.classList.add('active');
-    } else if (currentPage === "search.php") {
+    } else if (currentPage === "search.html") {
         document.getElementById('searchLink')?.classList.add('active');
     } else if (currentPage === "add.html") {
         document.getElementById('addLink')?.classList.add('active');
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // สร้างการ์ด HTML
     function createCard(card) {
         return `
-            <div class="card mb-3 mx-auto my-card font" onclick="goToPost('${card.image}', '${card.title}', '${card.description}', '${card.date}', '${card.location}', '${card.postedDateTime}')">
+            <div class="card mb-3 mx-auto my-card font" style="top:60px" onclick="goToPost('${card.image}', '${card.title}', '${card.description}', '${card.date}', '${card.location}', '${card.postedDateTime}')">
                 <div class="row g-0">
                     <div class="col-md-4" style="height: 250px; display: flex; align-items: center;">
                         <img src="/image/${card.image}" class="img-fluid rounded-start" alt="${card.title}" 

@@ -1,52 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search</title>
-
-    <!-- Include Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Include your custom CSS -->
-    <link rel="stylesheet" href="css/design.css">
-    <link rel="stylesheet" href="css/designset.css">
-    <link rel="stylesheet" href="css/addDesign.css">
-</head>
-
-<body>
-    <div class="foundify" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-        <a style="flex-grow: 1; text-align: center;">Foundify</a>
-        <label class="switch">
-            <input type="checkbox" id="toggleMode">
-            <span class="slider"></span>
-        </label>
-    </div>
-
-    <form class="d-flex" role="search" style="width: 100%; padding-top: 100px;" onsubmit="performSearch(event)">
+<div class="container d-flex flex-column align-items-center justify-content-center was-validated" style="height: 100vh; padding-top: 20px;">=
+    <form class="search-contrainer w-100 mt-5" role="search"  onsubmit="performSearch(event)">
         <div class="input-group" style="width: 100%; display: flex; align-items: center;">
             <input class="form-control rounded-pill search" type="search" placeholder="Search" aria-label="Search" id="searchInput">
-            <button class="btn btn-outline-success rounded-pill" type="submit" style="border: none; background: none; margin-left: 10px; color: rgb(36,222,206);"
+            <button class="btn btn-outline-success rounded-pill" type="submit" style="border: none; background: none; margin-left: 10px;  color: rgb(36,222,206);"
                 onmouseover="this.style.backgroundColor='#dcdcdc';" onmouseout="this.style.backgroundColor='';">
                 <i class="bi bi-search"></i>
             </button>
         </div>
     </form>
-    
+
+
     <div class="container" style="padding-top: 20px; padding-bottom: 80px;">
         <div id="searchResults"></div>
     </div>
+    </div>
 
-    <footer class="footer">
-        <div class="container d-flex justify-content-around d-flex2">
-            <a href="index.html" id="indexLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
-            <a href="search.html" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
-            <a href="add.html" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
-            <a href="signup.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
-        </div>
-    </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -72,11 +40,11 @@
                                 <div class="card mb-3 mx-auto my-card font">
                                     <div class="row g-0">
                                         <div class="col-md-4" style="height: 250px; display: flex; align-items: center;">
-                                            <img src="uploads/${item.image}" class="img-fluid rounded-start" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                            <img src="../back/api/uploads/${item.image}" class="img-fluid rounded-start" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body d-flex flex-column justify-content-between" style="min-height: 200px;">
-                                                <h2 class="card-title">${item.title}</h2>
+                                                <h2 class="card-title">${item.name}</h2>
                                                 <p class="card-text flex-grow-1">${item.description}</p>
                                                 <div>
                                                     <div class="my-textTime my-textfont">
@@ -86,7 +54,7 @@
                                                         <i class="bi bi-geo-alt-fill font" style="margin-right: 5px;"></i> ${item.location}
                                                     </div>
                                                     <div class="my-textPost">
-                                                        <i class="bi bi-clock-fill font" style="margin-right: 5px;"></i> โพสต์เมื่อ: ${item.posted}
+                                                        <i class="bi bi-clock-fill font" style="margin-right: 5px;"></i> โพสต์เมื่อ: ${item.created_at}
                                                     </div>
                                                 </div>
                                             </div>
@@ -103,22 +71,5 @@
         }
 
         // Footer active link script
-        const currentPage = window.location.pathname.split("/").pop();
-        const links = document.querySelectorAll('.footer-icon');
-
-        links.forEach(link => link.classList.remove('active'));
-
-        if (currentPage === 'index.html') {
-            document.getElementById('indexLink').classList.add('active');
-        } else if (currentPage === 'search.html') {
-            document.getElementById('searchLink').classList.add('active');
-        } else if (currentPage === 'add.html') {
-            document.getElementById('addLink').classList.add('active');
-        } else if (currentPage === 'signup.html') {
-            document.getElementById('setLink').classList.add('active');
-        }
     </script>
-
     <script src="js/darkMode.js"></script>
-</body>
-</html>

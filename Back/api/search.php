@@ -6,7 +6,7 @@ $response = ['status' => 'error', 'message' => 'An error occurred'];
 if (isset($_GET['q'])) {
     $query = $conn->real_escape_string($_GET['q']);
     
-    $sql_search = "SELECT * FROM items WHERE title LIKE '%$query%' OR description LIKE '%$query%'";
+    $sql_search = "SELECT * FROM items WHERE name LIKE '%$query%' OR description LIKE '%$query%'";
     $result_search = $conn->query($sql_search);
     
     if ($result_search->num_rows > 0) {

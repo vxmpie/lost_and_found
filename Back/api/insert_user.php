@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']);
     $password = password_hash($conn->real_escape_string($_POST['password']), PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (name, username, email, password) VALUES ('$name', '$username', '$email', '$password')";
+    $sql = "INSERT INTO account (name, username, email, password) VALUES ('$name', '$username', '$email', '$password')";
     if ($conn->query($sql) === TRUE) {
         $response = ['status' => 'success', 'message' => 'New account created successfully'];
     } else {

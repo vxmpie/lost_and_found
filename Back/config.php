@@ -8,6 +8,8 @@ define('DB_SERVER', '89.213.177.80');
 define('DB_USERNAME', 'toon');
 define('DB_PASSWORD', 'toon1234');
 define('DB_NAME', 'lostnfound');
+// define('')
+
 
 $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 

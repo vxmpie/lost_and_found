@@ -1,41 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post</title>
-
-    <!-- Include Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Include your custom CSS -->
-    <link rel="stylesheet" href="css/design.css">
-    <link rel="stylesheet" href="css/addDesign.css">
-</head>
-
-<body>
-    <div class="foundify2" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-        <i class="bi bi-chevron-left" onclick="window.history.back();" style="cursor: pointer;"></i>
-        <a style="flex-grow: 1; text-align: center; margin: 0;">Foundify</a>
-        <i class="bi bi-flag-fill" onclick="window.location.href='report.html';" style="margin-left: auto; padding-right: 20px;"></i>
-    </div>
+    <?php 
+    session_start();
     
-    <div style="padding: 20px; display: flex; align-items: center; justify-content: center;">
-        <div id="postContent" class="card backgroundCard" style="max-width: 50%; border-radius: 15px; padding: 20px;">
+    ?>
+    <div class="container mx-auto">
+        <div id="postContent" style="margin-top: 150%">
             <!-- Content will be loaded here by JavaScript -->
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container d-flex justify-content-around d-flex2">
-            <a href="index.html" id="indexLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
-            <a href="search.html" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
-            <a href="add.html" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
-            <a href="signup_login.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
-        </div>
-    </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -47,9 +19,9 @@
                         const post = data.post;
                         const user = data.user;
                         const postContent = `
-                            <img src="uploads/${post.image}" class="card-img-top" style="background-color: transparent; padding: 20px; border-radius: 30px;">
+                            <img src="../back/api/uploads/${post.image}" class="img-fluid rounded" style="transparent: 50%; margin-top: 10%">
                             <div class="card-body">
-                                <h2 class="card-title">${post.title}</h2>
+                                <h2 class="card-title">${post.name}</h2>
                                 <p class="card-text">${post.description}</p>
                                 <div class="font">
                                     <i class="bi bi-calendar-fill" style="margin-right: 5px; color: rgba(5, 223, 209, 0.829)"></i>
@@ -60,7 +32,7 @@
                                     <span>${post.location}</span>
                                 </div>
                                 <div class="my-textPost">
-                                    <i class="bi bi-clock-fill" style="margin-right: 5px;"></i> โพสต์เมื่อ: ${post.posted}
+                                    <i class="bi bi-clock-fill" style="margin-right: 5px;"></i> โพสต์เมื่อ: ${post.created_at}
                                 </div>
                                 <div id="app" style="padding-top: 20px; margin-bottom: 30px;">
                                     <button id="contactButton">Contact</button>
@@ -121,22 +93,7 @@
         }
         
         // Footer active link script
-        const currentPage = window.location.pathname.split("/").pop();
-        const links = document.querySelectorAll('.footer-icon');
 
-        links.forEach(link => link.classList.remove('active'));
-
-        if (currentPage === 'index.html') {
-            document.getElementById('indexLink').classList.add('active');
-        } else if (currentPage === 'search.html') {
-            document.getElementById('searchLink').classList.add('active');
-        } else if (currentPage === 'add.html') {
-            document.getElementById('addLink').classList.add('active');
-        } else if (currentPage === 'signup_login.html') {
-            document.getElementById('setLink').classList.add('active');
-        }
     </script>
 
     <script src="js/darkMode.js"></script>
-</body>
-</html>

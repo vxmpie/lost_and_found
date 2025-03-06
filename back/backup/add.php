@@ -1,7 +1,7 @@
 <?php
-require_once '../config.php'; 
-session_start();
-$target_dir = __DIR__ . "\\uploads\\";
+require_once 'config.php'; 
+
+$target_dir = "../uploads/"; 
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
 
@@ -47,12 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($uploadOk == 1) {
-        $id = $_SESSION['user_id'];
-        $sql = "INSERT INTO items (name, image, description, date, location, post_by) VALUES ('$name', '$image', '$description', '$date', '$location', '$id')";
+        $sql = "INSERT INTO items (name, image, description, date, location) VALUES ('$name', '$image', '$description', '$date', '$location')";
         if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";
-            $url = "http://".$_SERVER['HTTP_HOST']."/front/";
-            header("Location: $url");
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
