@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Include your custom CSS -->
+    <link rel="stylesheet" href="css/design.css">
+    <link rel="stylesheet" href="css/addDesign.css">
+</head>
+
+<body>
+    <div class="foundify2" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <i class="bi bi-chevron-left" onclick="window.history.back();" style="cursor: pointer;"></i>
+        <a style="flex-grow: 1; text-align: center; margin: 0;">Foundify</a>
+        <i class="bi bi-flag-fill" onclick="window.location.href='report.html';" style="margin-left: auto; padding-right: 20px;"></i>
+    </div>
+    
+    <div style="padding: 20px; display: flex; align-items: center; justify-content: center;">
+        <div id="postContent" class="card backgroundCard" style="max-width: 50%; border-radius: 15px; padding: 20px;">
+            <!-- Content will be loaded here by JavaScript -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container d-flex justify-content-around d-flex2">
+            <a href="index.html" id="indexLink" class="footer-icon"><i class="bi bi-house-door-fill"></i></a>
+            <a href="search.html" id="searchLink" class="footer-icon"><i class="bi bi-search-heart-fill"></i></a>
+            <a href="add.html" id="addLink" class="footer-icon"><i class="bi bi-plus-circle-fill"></i></a>
+            <a href="signup_login.html" id="setLink" class="footer-icon"><i class="bi bi-person-fill"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const postId = new URLSearchParams(window.location.search).get('id');
+            fetch(`../Back/api/get_post.php?id=${postId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        const post = data.post;
+                        const user = data.user;
+                        const postContent = `
+                            <img src="uploads/${post.image}" class="card-img-top" style="background-color: transparent; padding: 20px; border-radius: 30px;">
+                            <div class="card-body">
+                                <h2 class="card-title">${post.title}</h2>
+                                <p class="card-text">${post.description}</p>
+                                <div class="font">
+                                    <i class="bi bi-calendar-fill" style="margin-right: 5px; color: rgba(5, 223, 209, 0.829)"></i>
+                                    <span>${post.date}</span>
+                                </div>
+                                <div class="font">
+                                    <i class="bi bi-geo-alt-fill" style="margin-right: 5px;color: rgba(5, 223, 209, 0.829)"></i>
+                                    <span>${post.location}</span>
+                                </div>
+                                <div class="my-textPost">
+                                    <i class="bi bi-clock-fill" style="margin-right: 5px;"></i> โพสต์เมื่อ: ${post.posted}
+                                </div>
+                                <div id="app" style="padding-top: 20px; margin-bottom: 30px;">
+                                    <button id="contactButton">Contact</button>
+                                    <div id="contactBox" class="contact-box">
+                                        <button class="hide-button" onclick="toggleContact()">Hide</button>
+                                        <div style="font-size: 20px;"><strong>Contact</strong></div>
+                                        <div>Email: ${user.email}</div>
+                                    </div>
+                                    <div class="backdrop" id="backdrop"></div>
+                                    <div class="dialog background" id="dialog">
+                                        <h2>Please Log in</h2>
+                                        <p>to view contact information.</p>
+                                        <button onclick="goToLogin()">Go to Account for Log In</button>
+                                    </div>
+                                </div>
+                            </div>`;
+                        document.getElementById('postContent').innerHTML = postContent;
+                        setupContactButton(data.isLoggedIn);
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        function toggleContact() {
+            const contactBox = document.getElementById('contactBox');
+            const contactButton = document.getElementById('contactButton');
+            contactBox.classList.toggle('active');
+            contactButton.style.display = contactBox.classList.contains('active') ? 'none' : 'inline-block';
+        }
+
+        function showDialog() {
+            const dialog = document.getElementById('dialog');
+            const backdrop = document.getElementById('backdrop');
+            dialog.classList.add('active');
+            backdrop.classList.add('active');
+        }
+
+        function hideDialog() {
+            const dialog = document.getElementById('dialog');
+            const backdrop = document.getElementById('backdrop');
+            dialog.classList.remove('active');
+            backdrop.classList.remove('active');
+        }
+
+        function goToLogin() {
+            window.location.href = 'signup_login.html';
+            hideDialog();
+        }
+
+        function setupContactButton(isLoggedIn) {
+            const contactButton = document.getElementById('contactButton');
+            contactButton.onclick = isLoggedIn ? toggleContact : showDialog;
+            if (!isLoggedIn) {
+                contactButton.textContent = 'Request Founder Contact';
+            }
+        }
+        
+        // Footer active link script
+        const currentPage = window.location.pathname.split("/").pop();
+        const links = document.querySelectorAll('.footer-icon');
+
+        links.forEach(link => link.classList.remove('active'));
+
+        if (currentPage === 'index.html') {
+            document.getElementById('indexLink').classList.add('active');
+        } else if (currentPage === 'search.html') {
+            document.getElementById('searchLink').classList.add('active');
+        } else if (currentPage === 'add.html') {
+            document.getElementById('addLink').classList.add('active');
+        } else if (currentPage === 'signup_login.html') {
+            document.getElementById('setLink').classList.add('active');
+        }
+    </script>
+
+    <script src="js/darkMode.js"></script>
+</body>
+</html>

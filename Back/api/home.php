@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once '../config.php';
 
 $sql = "SELECT * FROM items";
 $result = $conn->query($sql);
